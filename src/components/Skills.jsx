@@ -69,7 +69,7 @@ const Skills = () => (
                     <motion.div
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="p-4 bg-base-100 shadow-lg rounded-lg"
+                        className="p-4 bg-base-100 shadow-lg rounded-lg border-beam-card"
                     >
                         {skill.icon}
                         <p className="font-semibold mt-1">{skill.label}</p>

@@ -139,7 +139,7 @@ const Projects = () => {
                 {projects.map((project) => (
                     <motion.div
                         key={project.id}
-                        className="group relative overflow-hidden rounded-2xl bg-base-200 border border-primary/20 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20"
+                        className="group relative overflow-hidden rounded-2xl bg-base-200 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 border-beam-card"
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         whileHover={{ y: -10 }}

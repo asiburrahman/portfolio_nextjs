@@ -50,3 +50,51 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Refined Smooth Animated Border (Border Beam) */
+.border-beam-card {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.border-beam-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 240deg,
+      rgba(251, 191, 36, 0.2) 280deg,
+      #fbbf24 320deg,
+      #fbbf24 350deg,
+      rgba(251, 191, 36, 0.2) 360deg);
+  filter: blur(12px);
+  /* Makes it a soft, smooth glow */
+  animation: rotate-border 6s linear infinite;
+  /* Slower is smoother */
+  z-index: -2;
+}
+
+/* The inner card background cover */
+.border-beam-card::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: inherit;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+@keyframes rotate-border {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
