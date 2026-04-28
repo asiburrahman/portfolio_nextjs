@@ -2,6 +2,9 @@
 import { motion } from "framer-motion";
 import { FaCode, FaBriefcase, FaPalette, FaSmile } from "react-icons/fa";
 import Image from "next/image";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -17,16 +20,33 @@ const sectionVariants = {
 };
 
 const About = () => {
+    const containerRef = useRef(null);
+
+    useGSAP(() => {
+        gsap.from(".about-title", {
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            x: -50,
+            duration: 1,
+            ease: "power2.out",
+        });
+    }, { scope: containerRef });
+
     return (
         <motion.div
             id="about"
+            ref={containerRef}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="w-11/12 lg:w-10/12 mx-auto my-20 relative overflow-hidden bg-base-200 border border-primary/30 rounded-xl p-6 sm:p-10 shadow-lg hover:shadow-primary/10 transition-shadow duration-300"
         >
-            <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
+            <h2 className="about-title text-3xl font-bold mb-8 text-center">About Me</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 {/* Left side: About Details */}
                 <div className="space-y-10">
